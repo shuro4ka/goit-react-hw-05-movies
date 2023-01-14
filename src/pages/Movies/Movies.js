@@ -5,14 +5,8 @@ import { getSearchedMovies } from 'service/api';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 // import Pagination from 'components/Pagination/Pagination';
 
-import {
-  ListContainer,
-  MoviesList,
-  ListItem,
-  MovieLink,
-  NoImageAvlb,
-  MovTitle,
-} from './Movies.styled';
+
+import styled from 'styled-components';
 
 
 const Movies = () => {
@@ -53,42 +47,61 @@ const Movies = () => {
   }, [filterParam, movies]);
 
   return (
-    <ListContainer>
+   
+    <div className ={styled.listContainer}>
       <Searchbar onSubmit={onSubmit} />
       {visibleMovies.length > 0 && (
-        <MoviesList>
+        <ul className ={styled.moviesList}>
           {visibleMovies.map(movie => (
-            <ListItem key={movie.id}>
-              <MovieLink to={`${movie.id}`} state={{ from: location }}>
+            <li className={styled.listItem} key={movie.id}>
+              <nav to={`${movie.id}`} state={{ from: location }}>
                 {movie.poster_path ? (
                   <img src={imageURL + movie.poster_path} alt="Poster" />
                 ) : (
-                  <NoImageAvlb
+                  <img className ={styled.noImgAvlb}
                     src="https://bpgroup.lv/i/product_images/images/Z2000128443.jpg"
                     alt="No Poster Available"
                   />
                 )}
 
-                <MovTitle>{movie.title}</MovTitle>
-              </MovieLink>
-            </ListItem>
+                <h2 className={styled.movieTitle}>{movie.title}</h2>
+              </nav>
+            </li>
           ))}
-        </MoviesList>
+        </ul>
       )}
 
-      {/* <Pagination
-        total={Number(100)}
-        limit={Number(20)}
-        page={page}
-        setPage={setPage}
-      /> */}
-    </ListContainer>
+</div>
   );
 };
 
 export default Movies;
 
 
+// {/* <ListContainer>
+// <Searchbar onSubmit={onSubmit} />
+// {visibleMovies.length > 0 && (
+//   <MoviesList>
+//     {visibleMovies.map(movie => (
+//       <ListItem key={movie.id}>
+//         <MovieLink to={`${movie.id}`} state={{ from: location }}>
+//           {movie.poster_path ? (
+//             <img src={imageURL + movie.poster_path} alt="Poster" />
+//           ) : (
+//             <NoImageAvlb
+//               src="https://bpgroup.lv/i/product_images/images/Z2000128443.jpg"
+//               alt="No Poster Available"
+//             />
+//           )}
+
+//           <MovTitle>{movie.title}</MovTitle>
+//         </MovieLink>
+//       </ListItem>
+//     ))}
+//   </MoviesList>
+// )}
+
+// </ListContainer> */}
 
 
 
