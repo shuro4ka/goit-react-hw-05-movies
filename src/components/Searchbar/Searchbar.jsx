@@ -6,14 +6,14 @@ export const Searchbar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <header className={styles.Searchbar}>
-      <form className={styles.SearchForm} onSubmit={onSubmit}>
-        <button type="submit" className={styles.SearchFormButton}>
+    <header className={styles.searchbar}>
+      <form className={styles.searchForm} onSubmit={onSubmit}>
+        <button type="submit" className={styles.searchFormButton}>
           <span className="button-label">Search</span>
         </button>
 
         <input
-          className={styles.SearchFormInput}
+          className={styles.searchFormInput}
           type="text"
           autoComplete="off"
           autoFocus

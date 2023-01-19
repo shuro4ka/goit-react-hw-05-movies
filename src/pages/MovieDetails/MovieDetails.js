@@ -38,41 +38,44 @@ const MovieDetails = props => {
           <Link to={backLink} className={styles.link}>
             Go back
           </Link>
-          <img
-            src={`https://image.tmdb.org/t/p/w400${movieData.poster_path}`}
-            alt={movieData.original_title}
-          />
-          <h2>{movieData.original_title}</h2>
-          <p>User Score: </p>
-          <h3>Overview</h3>
-          <p>{movieData.overview}</p>
-          <h3>Genres</h3>
+          <div className={styles.container}>
+            <img
+              src={`https://image.tmdb.org/t/p/w400${movieData.poster_path}`}
+              alt={movieData.original_title}
+            />
+            <div className={styles.movieInfo}>
+              <h2>{movieData.original_title}</h2>
+              <h3>Overview</h3>
+              <p>{movieData.overview}</p>
+              <h3>Genres</h3>
 
-          <p>{movieData.genres.join(' ')}</p>
-          <ul>
-            <span>Additional infromation</span>
-            <li>
-              <NavLink
-                to="cast"
-                className={styles.link}
-                state={{ from: backLink }}
-              >
-                Cast
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="reviews"
-                className={styles.link}
-                state={{ from: backLink }}
-              >
-                Reviews
-              </NavLink>
-            </li>
-          </ul>
-          <Suspense>
-            <Outlet />
-          </Suspense>
+              <p>{movieData.genres.join(' ')}</p>
+              <ul>
+                <span>Additional infromation</span>
+                <li>
+                  <NavLink
+                    to="cast"
+                    className={styles.link}
+                    state={{ from: backLink }}
+                  >
+                    Cast
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="reviews"
+                    className={styles.link}
+                    state={{ from: backLink }}
+                  >
+                    Reviews
+                  </NavLink>
+                </li>
+              </ul>
+              <Suspense>
+                <Outlet />
+              </Suspense>
+            </div>
+          </div>
         </div>
       )}
     </div>

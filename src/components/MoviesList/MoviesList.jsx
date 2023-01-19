@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import styles from './MoviesList.module.css';
 
 export const MoviesList = ({ moviesData, location }) => {
     return (
@@ -11,15 +12,6 @@ export const MoviesList = ({ moviesData, location }) => {
                       } 
                       state={{ from: location }}
                       >
-                      {/* <img
-                          src={
-                            poster_path
-                              ? `https://image.tmdb.org/t/p/w400${poster_path}`
-                              : 'https://sd.keepcalms.com/i/keep-calm-poster-not-found.png'
-                          }
-                          alt=""
-                          width="400"
-                        /> */}
                         {original_title ? original_title : name}
                       </Link>
                 </li>
