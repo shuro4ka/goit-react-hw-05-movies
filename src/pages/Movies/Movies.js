@@ -1,15 +1,18 @@
-import { useMemo } from 'react';
+// import { useMemo } from 'react';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { getSearchedMovies } from 'service/api';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import styles from './Movies.module.css';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+// import { useMemo } from 'react';
 
 const Movies = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const imageURL = 'https://image.tmdb.org/t/p/w185';
+  const [isLoading, setIsLoading] = useState(false);
+  //const imageURL = 'https://image.tmdb.org/t/p/w185';
 
 
   const onSubmit = e => {
@@ -33,18 +36,23 @@ const Movies = () => {
     }, 200);
   }, [filterParam]);
 
-  const visibleMovies = useMemo(() => {
-    return movies.filter(
-      movie =>
-        movie.hasOwnProperty('title') &&
-        movie.title.toLowerCase().includes(filterParam.toLowerCase())
-    );
-  }, [filterParam, movies]);
+  // const visibleMovies = useMemo(() => {
+  //   return movies.filter(
+  //     movie =>
+  //       movie.hasOwnProperty('title') &&
+  //       movie.title.toLowerCase().includes(filterParam.toLowerCase())
+  //   );
+  // }, [filterParam, movies]);
 
   return (
+    
     <div className={styles.listContainer}>
       <Searchbar onSubmit={onSubmit} />
-      {visibleMovies.length > 0 && (
+      {isLoading }
+            {movies && (
+                <MoviesList moviesData={movies} location={location} />
+            )} 
+      {/* {visibleMovies.length > 0 && (
         <ul className={styles.moviesList}>
           {visibleMovies.map(movie => (
             <li className={styles.listItem} key={movie.id}>
@@ -64,7 +72,7 @@ const Movies = () => {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 };

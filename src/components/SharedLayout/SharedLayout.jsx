@@ -15,7 +15,7 @@ export const SharedLayout = () => {
                     </li>
 
                     <li className ={styles.listItem}>
-                        <NavLink to="movies" className={styles.navLink}>
+                        <NavLink to="/movies" className={styles.navLink}>
                             Movies
                         </NavLink>
                     </li>
