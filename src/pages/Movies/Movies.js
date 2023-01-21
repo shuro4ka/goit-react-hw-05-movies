@@ -11,7 +11,7 @@ const Movies = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
   //const imageURL = 'https://image.tmdb.org/t/p/w185';
 
 
@@ -48,7 +48,7 @@ const Movies = () => {
     
     <div className={styles.listContainer}>
       <Searchbar onSubmit={onSubmit} />
-      {isLoading }
+      {/* {isLoading } */}
             {movies && (
                 <MoviesList moviesData={movies} location={location} />
             )} 
