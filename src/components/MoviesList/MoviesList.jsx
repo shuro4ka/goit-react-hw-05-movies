@@ -25,7 +25,7 @@ export const MoviesList = ({ moviesData, location }) => {
               }
               state={{ from: location }}
               >
-              <h2 className={styles.movieTitle}>{original_title.length > 32 ? original_title.slice(0, 32) + '...' : original_title}</h2>
+              <h2 className={styles.movieTitle}>{original_title ? original_title : name}</h2>
             </Link>
           </li>
         );
